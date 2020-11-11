@@ -3,21 +3,24 @@ import React from 'react';
 
 import {states} from "./state";
 
+
+
 export default class Hello extends React.Component {
     ID  = {
-        arizona : 'az',
-        title : states[0].text.toUpperCase()
+        name : 'az',
     }
 
     DEL = {
-        number : 11,
         biden : [],
         trump : []
     }
 
+
+
     state = {
         call : 'Too Close to Call !',
         color : '#999999',
+
 
     }
     increment = () => {
@@ -28,7 +31,7 @@ export default class Hello extends React.Component {
                 call : 'Rep',
                 color : '#F91104'
             })
-            this.DEL.trump.push(this.DEL.number);
+            this.DEL.trump.push(this.state.number);
             this.DEL.biden.pop();
 
 
@@ -44,7 +47,7 @@ export default class Hello extends React.Component {
                 call : 'Dem',
                 color : '#0000FF'
             })
-            this.DEL.biden.push(this.DEL.number);
+            this.DEL.biden.push(this.state.number);
             this.DEL.trump.pop();
 
             console.log('Biden won ' + this.DEL.biden.reduce(function (a,b) {
@@ -63,20 +66,29 @@ export default class Hello extends React.Component {
 
         }
     }
+
+
     render() {
 
 
         return(
 
-            <div className={this.ID.arizona} onClick={this.increment} style={{backgroundColor: this.state.color}}>
-                <p className={"ARIZONA"}>{this.ID.title}</p>
+            <div>
+                {states.map(title => (
+                    <div key={title} className={this.ID.name} onClick={this.increment} style={{backgroundColor: this.state.color}}>
+                        <p className={"NAME"}>{title}</p>
+                    </div>
+                ))}
             </div>
+
 
         )
     }
 
 
 }
+
+
 
 
 
