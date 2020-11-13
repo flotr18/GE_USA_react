@@ -3,11 +3,9 @@
     padding: 0;
 }
 
-
 .az {
     height: 150px;
     width: 150px;
-    background-color: #999999;
     cursor: pointer;
 }
 

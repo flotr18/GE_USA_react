@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Hello from "./App";
+import App from "./App";
+
+import {states} from "./state";
+
+
+
+
 
 
 ReactDOM.render(
-    < Hello />,
+    < App />,
     document.getElementById('root')
 )
+
 
 
 

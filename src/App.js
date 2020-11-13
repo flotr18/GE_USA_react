@@ -5,15 +5,25 @@ import {states} from "./state";
 
 
 
+
+
+
 export default class Hello extends React.Component {
     ID  = {
         name : 'az',
     }
 
     DEL = {
-        biden : [],
-        trump : []
+        number : states[42].number,
+        dem : [],
+        rep : []
     }
+
+
+
+
+
+
 
 
 
@@ -23,19 +33,19 @@ export default class Hello extends React.Component {
 
 
     }
-    increment = () => {
+    result = () => {
 
 
         if (this.state.call === 'Too Close to Call !'){
             this.setState({
                 call : 'Rep',
-                color : '#F91104'
+                color : '#d22532'
             })
-            this.DEL.trump.push(this.state.number);
-            this.DEL.biden.pop();
+            this.DEL.rep.push(this.DEL.number);
+            this.DEL.dem.pop();
 
 
-            console.log('Trump won ' + this.DEL.trump.reduce(function (a,b) {
+            console.log('Trump won ' + this.DEL.rep.reduce(function (a,b) {
                 return a + b
 
             },0) + ' delegates')
@@ -45,12 +55,12 @@ export default class Hello extends React.Component {
         else if (this.state.call === 'Rep'){
             this.setState({
                 call : 'Dem',
-                color : '#0000FF'
+                color : '#244999'
             })
-            this.DEL.biden.push(this.state.number);
-            this.DEL.trump.pop();
+            this.DEL.dem.push(this.DEL.number);
+            this.DEL.rep.pop();
 
-            console.log('Biden won ' + this.DEL.biden.reduce(function (a,b) {
+            console.log('Biden won ' + this.DEL.dem.reduce(function (a,b) {
                 return a + b
 
             },0) + ' delegates')
@@ -68,18 +78,25 @@ export default class Hello extends React.Component {
     }
 
 
+
+
+
     render() {
 
 
         return(
 
             <div>
-                {states.map(title => (
-                    <div key={title} className={this.ID.name} onClick={this.increment} style={{backgroundColor: this.state.color}}>
-                        <p className={"NAME"}>{title}</p>
+                {states.map((usa, index) =>
+                    <div key={usa.text + index}  className={this.ID.name} id={usa.text} onClick={this.result} style={{backgroundColor: this.state.color}}>
+                        <p className={"NAME"}>{usa.value} {usa.number}</p>
                     </div>
-                ))}
+                )
+
+                }
             </div>
+
+
 
 
         )
@@ -87,8 +104,4 @@ export default class Hello extends React.Component {
 
 
 }
-
-
-
-
 
